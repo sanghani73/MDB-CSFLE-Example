@@ -86,3 +86,5 @@ The ciphertext of the encrypted value includes the key id hence it is not requir
 4) How does key rotation of my "master key" held in my KMS impact CSFLE?
 
 The CSFLE feature uses [envelope encryption](https://www.mongodb.com/docs/v7.0/reference/glossary/#std-term-envelope-encryption) which means that the key managed by the customer is used to encrypt the key that us used to encrypt the data. So when you need to rotate the "master key", you will need to rewrap the data key. This can be done via the [KeyVault.rewrapManyDataKey](https://www.mongodb.com/docs/v7.0/reference/method/KeyVault.rewrapManyDataKey/#mongodb-method-KeyVault.rewrapManyDataKey) method. The [following document ](https://www.mongodb.com/docs/v7.0/core/queryable-encryption/fundamentals/manage-keys/) gives you an overive of key rotation and its impact on CSFLE (it is from the Queryable Encryption docs but the process around rotation works in the same way).
+
+More information about CSFLE can be found in [this specification document](https://github.com/mongodb/specifications/blob/d1157f7e135b5a98c50a1cc342597a0905a99a58/source/client-side-encryption/client-side-encryption.rst)
